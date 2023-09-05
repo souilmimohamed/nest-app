@@ -6,7 +6,17 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+      - ~/apps/postgres_dev:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=nest
+  test-db:
+    image: postgres:13
+    ports:
+      - 5435:5435
+    volumes:
+      - ~/apps/postgres_test:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=postgres
